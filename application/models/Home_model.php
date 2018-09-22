@@ -212,5 +212,16 @@ class home_model extends CI_model{
      $this->db->update('site_options',$data);
   }
 
+  public function updatePhotoBatik($filename,$id)
+  {
+    $fname = str_replace(' ', '_', $filename);
+    $data = array(
+      'img_path_'.$this->input->post('carousel') => $fname.'.jpg'
+     );
+     $where = array('id' =>$id);
+     $this->db->where($where);
+     $this->db->update('region',$data);
+  }
+
 }
 ?>

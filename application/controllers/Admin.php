@@ -104,6 +104,7 @@ class Admin extends CI_Controller {
 
 	public function editRegion($id)
 	{
+		$data['region'] = $this->home_model->getSelectedRegion($id);
 		if($this->session->userdata['login']==1){
 			$data['previllegesBar'] = $this->session->userdata['previlleges'];
 		} else {
@@ -113,6 +114,18 @@ class Admin extends CI_Controller {
 		if ($this->input->post('updateRegion')) {
 			$this->home_model->updateRegion($id);
 			redirect(base_url('configureContent'));
+		} elseif ($this->input->post('uploadPhoto')) {
+			$config['upload_path']   = APPPATH.'../assets/batik/';
+			$config['overwrite'] = TRUE;
+			$config['file_name']     = $data['region']->batik_name.$this->input->post('carousel');
+			$config['allowed_types'] = 'jpg|png';
+			$this->load->library('upload', $config);
+			if (!$this->upload->do_upload('carousel_img')) {
+				echo $this->upload->display_errors();
+			} else {
+				$this->home_model->updatePhotoBatik($config['file_name'],$id);
+			}
+
 		}
 		$data['site'] = $this->home_model->getSiteConfig();
 		$data['region'] = $this->home_model->getSelectedRegion($id);
