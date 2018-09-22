@@ -223,5 +223,16 @@ class home_model extends CI_model{
      $this->db->update('region',$data);
   }
 
+  public function updateLogoBrand($filename,$id)
+  {
+    $fname = str_replace(' ', '_', $filename);
+    $data = array(
+      'brand_img' => $fname.'.jpg'
+     );
+     $where = array('id' =>$id);
+     $this->db->where($where);
+     $this->db->update('brand',$data);
+  }
+
 }
 ?>

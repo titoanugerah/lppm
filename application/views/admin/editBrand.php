@@ -10,10 +10,11 @@
       <div class="col-md-14">
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#addBrand" data-toggle="tab">Edit Merk</a></li>
+            <li class="active"><a href="#editBrand" data-toggle="tab">Edit Merk</a></li>
+            <li class=""><a href="#editLogo" data-toggle="tab">Logo</a></li>
           </ul>
           <div class="tab-content">
-            <div class="active tab-pane" id="addBrand">
+            <div class="active tab-pane" id="editBrand">
               <form class="form-horizontal" method="post">
 
                 <div class="form-group">
@@ -53,6 +54,32 @@
                     <button type="submit" class="btn btn-success" name="updateBrand" value="updateBrand">Perbaharui Data</button>
                   </div>
                 </div>
+              </form>
+            </div>
+
+            <div class="tab-pane" id="editLogo">
+              <center>
+              <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                <img src="<?php echo base_url('./assets/brand/').$brand->brand_img; ?>" alt="">
+              </center>
+              <br>
+              <br>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Gambar Carousel</label>
+                <input type="file" name="img">
+              </div>
+
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-success" name="uploadLogo" value="uploadLogo">Upload Logo</button>
+                </div>
+              </div>
+
+                <br>
+                <br>
+                <br>
+
               </form>
             </div>
             <!-- /.tab-pane -->

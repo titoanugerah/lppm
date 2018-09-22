@@ -52,6 +52,7 @@
                   <th>Nama Merk</th>
                   <th>Pemilik</th>
                   <th>Alamat</th>
+                  <th>Logo</th>
                 </tr>
               </thead>
               <tbody>
@@ -61,6 +62,7 @@
                     <td><?php echo $item->brand_name; ?></td>
                     <td><?php echo $item->owner; ?></td>
                     <td><?php echo $item->address; ?></td>
+                    <td> <img src="<?php echo base_url('./assets/brand/').$item->brand_img; ?>" width="70px" height="70px"> </td>
                   </tr>
                   <?php $i++; endforeach; ?>
                 </tbody>
@@ -70,6 +72,7 @@
                     <th>Nama Merk</th>
                     <th>Pemilik</th>
                     <th>Alamat</th>
+                    <th>Logo</th>
                   </tr>
                 </tfoot>
               </table>

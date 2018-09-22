@@ -85,6 +85,7 @@ class Admin extends CI_Controller {
 
 	public function editBrand($id)
 	{
+		$data['brand'] = $this->home_model->getSelectedBrand($id);
 		if($this->session->userdata['login']==1){
 			$data['previllegesBar'] = $this->session->userdata['previlleges'];
 		} else {
@@ -94,10 +95,20 @@ class Admin extends CI_Controller {
 		if ($this->input->post('updateBrand')) {
 			$this->home_model->updateBrand($id);
 			redirect(base_url('configureContent'));
+		} elseif ($this->input->post('uploadLogo')) {
+			$config['upload_path']   = APPPATH.'../assets/brand/';
+			$config['overwrite'] = TRUE;
+			$config['file_name']     = $data['brand']->brand_name;
+			$config['allowed_types'] = 'jpg|png';
+			$this->load->library('upload', $config);
+			if (!$this->upload->do_upload('img')) {
+				echo $this->upload->display_errors();
+			} else {
+				$this->home_model->updateLogoBrand($config['file_name'],$id);
+			}
 		}
 		$data['site'] = $this->home_model->getSiteConfig();
 		$data['region'] = $this->home_model->getRegion();
-		$data['brand'] = $this->home_model->getSelectedBrand($id);
 		$data['view_name'] = 'admin/editBrand';
 		$this->load->view('temp',$data);
 	}
