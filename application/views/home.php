@@ -115,8 +115,8 @@
           <h3 class="box-title">Peta</h3>
         </div>
         <div class="box-body">
-          <?php echo $site->map_link; ?>
-<!--          <iframe src="https://www.google.com/maps/d/embed?mid=1_lc6FjKHVuLd4kA0pjvfYzJqtOI_UXmF" width="100%" height="640"></iframe> -->
+          <?php //echo $site->map_link; ?>
+          <iframe width="100%" height="520" frameborder="0" src="https://titoanugerahm.carto.com/builder/ad764c4f-ab10-4ff7-8a09-edb22638b064/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
         </div>
         <!-- /.box-body -->
       </div>
